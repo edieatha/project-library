@@ -1,10 +1,12 @@
 let myLibrary = [];
 
-function Book( title, author, pages, read ) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+function Book ( title, author, pages, read ) {
+  return {
+  title,
+  author,
+  pages,
+  read
+  }
 }
 
 function addBookToLibrary( newbook, arrLibrary ) {
@@ -23,6 +25,15 @@ Book.prototype.upRead = function( ) {
     this.read = "yes";
   }
 };
+
+function formGrab() {
+let arr = []
+ arr.push(document.getElementById("book-title").value);
+ arr.push(document.getElementById("book-author").value);
+ arr.push(document.getElementById("book-pages").value);
+ arr.push(document.querySelector('input[name="status"]:checked').value);
+ console.log(arr)
+}
 
 let book1 = new Book( "josia", "josia auth", 10, "yes" );
 myLibrary = addBookToLibrary( book1, myLibrary );
