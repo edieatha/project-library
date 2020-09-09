@@ -16,13 +16,15 @@ function removeBookToLibrary(index, arrLibrary) {
   return arrLibrary.splice(index, 1);
 }
 
-Book.prototype.upRead = function () {
-  if (this.read === 'Read? Yes') {
-    this.read = 'Read? No';
+Book.prototype.upRead = upReadFunc;
+
+function upReadFunc() {
+  if (this.read === 'Yes') {
+    this.read = 'No';
   } else {
-    this.read = ' Read? Yes';
+    this.read = 'Yes';
   }
-};
+}
 
 const book1 = new Book('Javascript Algorithm', 'by Josia,', `${10} pages,`, 'Read? Yes');
 myLibrary = addBookToLibrary(book1, myLibrary);
@@ -30,38 +32,6 @@ const book2 = new Book('Ruby on Rails', 'by Edie,', `${20} pages,`, 'Read? Yes')
 myLibrary = addBookToLibrary(book2, myLibrary);
 const book3 = new Book('Oliver Twist', ' by Mark,', `${30} pages,`, 'Read? No');
 myLibrary = addBookToLibrary(book3, myLibrary);
-
-displayBooks(myLibrary);
-
-function formGrab() {
-  const form = document.getElementById('myForm');
-  const arr = [];
-  let flag = false;
-  let all = false;
-  arr.push(document.getElementById('book-title').value);
-  arr.push(`by ${document.getElementById('book-author').value},`);
-  arr.push(`${Number.parseInt(document.getElementById('book-pages').value)} pages, Read? `);
-  if (document.contains(document.querySelector('input[name="status"]:checked'))) {
-    arr.push(document.querySelector('input[name="status"]:checked').value);
-  } else {
-    arr.push(null);
-  }
-
-  const book = new Book(...arr);
-
-  flag = myLibrary.some((currentValue) => currentValue.title == arr[0] && currentValue.author == arr[1]);
-
-  all = arr.every((currentValue) => currentValue !== null && currentValue !== ' ' && currentValue !== NaN);
-
-  if (flag || !all) {
-    alert('cannot clone book or all fields should not be empty');
-  } else {
-    myLibrary = addBookToLibrary(book, myLibrary);
-    console.log(myLibrary);
-    displayBooks(myLibrary);
-    form.reset();
-  }
-}
 
 function displayBooks(arrShow) {
   const displArr = arrShow.slice();
@@ -99,3 +69,35 @@ function displayBooks(arrShow) {
   }
   container.appendChild(cardBody);
 }
+
+displayBooks(myLibrary);
+
+function formGrab() {
+  const form = document.getElementById('myForm');
+  const arr = [];
+  let flag = false;
+  let all = false;
+  arr.push(document.getElementById('book-title').value);
+  arr.push(`by ${document.getElementById('book-author').value},`);
+  arr.push(`${Number.parseInt(document.getElementById('book-pages').value)} pages, Read?`);
+  if (document.contains(document.querySelector('input[name="status"]:checked'))) {
+    arr.push(document.querySelector('input[name="status"]:checked').value);
+  } else {
+    arr.push(null);
+  }
+
+  const book = new Book(...arr);
+
+  flag = myLibrary.some((currentValue) => currentValue.title == arr[0] && currentValue.author == arr[1]);
+
+  all = arr.every((currentValue) => currentValue !== null && currentValue !== ' ' && currentValue !== NaN);
+
+  if (flag || !all) {
+    alert('cannot clone book or all fields should not be empty');
+  } else {
+    myLibrary = addBookToLibrary(book, myLibrary);
+    displayBooks(myLibrary);
+    form.reset();
+  }
+}
+
