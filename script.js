@@ -57,8 +57,7 @@ function displayBooks(arrShow) {
 
     up.classList.add('update');
     up.textContent = 'Update status';
-    let addEventListener = up.addEventListener;
-    addEventListener('click', () => {
+    up.addEventListener('click', () => {
       displArr[i].upRead();
       displayBooks(myLibrary);
     });
@@ -89,9 +88,9 @@ function formGrab() {
 
   const book = new Book(...arr);
 
-  flag = myLibrary.some((currentValue) => currentValue.title == arr[0] && currentValue.author == arr[1]);
+  flag = myLibrary.some((currentValue) => currentValue.title === arr[0] && currentValue.author === arr[1]);
 
-  all = arr.every((currentValue) => currentValue !== null && currentValue !== ' ' && currentValue !== NaN);
+  all = arr.every((currentValue) => currentValue !== null && currentValue !== ' ' && !isNaN(currentValue));
 
   if (flag || !all) {
     alert('cannot clone book or all fields should not be empty');
