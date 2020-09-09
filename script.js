@@ -57,7 +57,8 @@ function displayBooks(arrShow) {
 
     up.classList.add('update');
     up.textContent = 'Update status';
-    up.addEventListener('click', () => {
+    let addEventListener = up.addEventListener;
+    addEventListener('click', () => {
       displArr[i].upRead();
       displayBooks(myLibrary);
     });
