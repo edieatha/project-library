@@ -13,15 +13,16 @@
         <label for="lname">Book author:</label><br>
         <input type="text" id="book-author" name="book-author" required = 'required'><br>
         <label for="lname">Book pages:</label><br>
-        <input type="number" id="book-pages" name="book-pages" required = 'required'><br>
+        <input type="number" id="book-pages" name="book-pages" min = 1 required = 'required'><br>
         <label for="lname">Read the Book?:</label><br>
         <input type="radio" id="yes-status" class = "status" name="status" required = 'required' value='Yes'>Yes
         <input type="radio" id="no-status" class = "status" name="status" required = 'required' value='No'>No<br>
-        <input type="submit" id="submit" value="Add New Book" onclick="formGrab();">
+        <input type="button" id="submit" value="Add New Book" onclick="formGrab();">
         </form>
 
         <h1>Book Library</h1>
-        <div id="container"></div>
+        <div id="container">
+        </div>
 
 
 

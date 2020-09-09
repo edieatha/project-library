@@ -1,12 +1,10 @@
 let myLibrary = [];
 
 function Book ( title, author, pages, read ) {
-  return {
-  title,
-  author,
-  pages,
-  read
-  };
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+  this.read = read;
 }
 
 function addBookToLibrary( newbook, arrLibrary ) {
@@ -19,20 +17,24 @@ function removeBookToLibrary( index, arrLibrary ) {
 }
 
 Book.prototype.upRead = function( ) {
-  if ( this.read == "yes" ) {
-    this.read = "no";
+  if ( this.read == "Yes" ) {
+    this.read = "No";
   }else {
-    this.read = "yes";
+    this.read = "Yes";
   }
 };
 
-let book1 = new Book( "Javascript Algorithm", "Josia", 10, "yes" );
+Book.prototype.sayName = function() {
+  console.log( "ddd" );
+};
+
+let book1 = new Book( "Javascript Algorithm", "Josia", 10, "Yes" );
 myLibrary = addBookToLibrary( book1, myLibrary );
 console.log( myLibrary[ 0 ] );
-let book2 = new Book( "Ruby on Rails", "Edie",  20, "yes" );
+let book2 = new Book( "Ruby on Rails", "Edie",  20, "Yes" );
 myLibrary = addBookToLibrary( book2, myLibrary );
 console.log( myLibrary[ 1 ] );
-let book3 = new Book( "Oliver Twist", "Mark", 30, "no" );
+let book3 = new Book( "Oliver Twist", "Mark", 30, "No" );
 myLibrary = addBookToLibrary( book3, myLibrary );
 console.log( myLibrary[ 2 ] );
 
@@ -40,16 +42,36 @@ displayBooks( myLibrary );
 
 function formGrab() {
   let form = document.getElementById( "myForm" );
-let arr = [];
- arr.push( document.getElementById( "book-title" ).value );
- arr.push( document.getElementById( "book-author" ).value );
- arr.push( Number.parseInt( document.getElementById( "book-pages" ).value ) );
- arr.push( document.querySelector( 'input[name="status"]:checked' ).value );
- let book = new Book( ...arr );
- myLibrary = addBookToLibrary( book, myLibrary );
- console.log( myLibrary );
- displayBooks( myLibrary );
- form.reset();
+  let arr = [];
+  let flag = false;
+  let all = false;
+  arr.push( document.getElementById( "book-title" ).value );
+  arr.push( document.getElementById( "book-author" ).value );
+  arr.push( Number.parseInt( document.getElementById( "book-pages" ).value ) );
+  if ( document.contains( document.querySelector( 'input[name="status"]:checked' ) ) )  {
+    arr.push( document.querySelector( 'input[name="status"]:checked' ).value );
+  } else {
+    arr.push( null );
+  }
+
+  let book = new Book( ...arr );
+
+  flag = myLibrary.some( function( currentValue ) {
+    return currentValue.title == arr[ 0 ] && currentValue.author == arr[ 1 ];
+  } );
+
+  all = arr.every( function( currentValue ) {
+    return currentValue !== null && currentValue !== " " && currentValue !== NaN;
+  } );
+
+  if ( flag || !all ) {
+    alert( "cannot clone book or all fields should not be empty" );
+  } else {
+    myLibrary = addBookToLibrary( book, myLibrary );
+    console.log( myLibrary );
+    displayBooks( myLibrary );
+    form.reset();
+  }
 }
 
 function displayBooks( arrShow ) {
@@ -63,16 +85,27 @@ function displayBooks( arrShow ) {
   for ( let i = 0; i < displArr.length; i++ ) {
     let para = document.createElement( "p" );
     let del = document.createElement( "button" );
+    let up = document.createElement( "button" );
     del.classList.add( "delete" );
     del.textContent = "Remove";
     del.addEventListener( "click", () => {
       removeBookToLibrary( i, arrShow );
       displayBooks( myLibrary );
      } );
+
+     up.classList.add( "update" );
+     up.textContent = "Update status";
+     up.addEventListener( "click", () => {
+       displArr[ i ].upRead( );
+       displayBooks( myLibrary );
+      } );
+
     para.innerHTML = `${displArr[ i ].title } ${ displArr[ i ].author } ${ displArr[ i ].pages } ${displArr[ i ].read } <br>`;
     cardBody.appendChild( para );
     cardBody.appendChild( del );
+    cardBody.appendChild( up );
   }
   container.appendChild( cardBody );
+
   //Document.getElementById("submit").innerHTML = myLibrary;
 }
