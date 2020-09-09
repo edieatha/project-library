@@ -75,27 +75,27 @@ function displayBooks( arrShow ) {
   }
   const cardBody = document.createElement( "div" );
   cardBody.setAttribute( "id", "content" );
-  for ( let i = 0; i < displArr.length; i++ ) {
-    let para = document.createElement( "p" );
-    let del = document.createElement( "button" );
-    let up = document.createElement( "button" );
-    del.classList.add( "btn-danger", "btn", "mr-2", "btn-sm" );
-    up.classList.add( "btn-success", "btn", "mr-2", "btn-sm" );
-    para.classList.add("mb-1", "mt-2");
-    del.textContent = "Remove";
-    del.addEventListener( "click", () => {
-      removeBookToLibrary( i, arrShow );
-      displayBooks( myLibrary );
-     } );
 
-     up.classList.add( "update" );
-     up.textContent = "Update status";
-     up.addEventListener( "click", () => {
-       displArr[ i ].upRead( );
-       displayBooks( myLibrary );
-      } );
+  for (let i = 0; i < displArr.length; i++) {
+    const para = document.createElement('p');
+    const del = document.createElement('button');
+    const up = document.createElement('button');
+    del.classList.add('btn-danger', 'btn', 'mr-2', 'btn-sm');
+    up.classList.add('btn-success', 'btn', 'mr-2', 'btn-sm');
+    para.classList.add('mb-1', 'mt-2');
+    del.textContent = 'Remove Book';
+    del.addEventListener('click', () => {
+      removeBookToLibrary(i, arrShow);
+      displayBooks(myLibrary);
+     });
 
-    para.innerHTML = `${displArr[i].title } ${ displArr[i].author } ${ displArr[i].pages } ${displArr[i].read} <br>`;
+     up.classList.add( 'update' );
+     up.textContent = 'Update status';
+     up.addEventListener('click', () => { displArr[i].upRead();
+     displayBooks(myLibrary);
+     });
+
+    para.innerHTML = `${displArr[i].title} ${displArr[i].author} ${displArr[i].pages} ${displArr[i].read} <br>`;
     cardBody.appendChild(para);
     cardBody.appendChild(del);
     cardBody.appendChild(up);
