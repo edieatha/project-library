@@ -88,12 +88,12 @@ function formGrab() {
 
   const book = new Book(...arr);
 
-  flag = myLibrary.some((currentValue) => currentValue.title === arr[0] && currentValue.author === arr[1]);
+  flag = myLibrary.some((curVal) => curVal.title === arr[0] && curVal.author === arr[1]);
 
-  all = arr.every((currentValue) => currentValue !== null && currentValue !== ' ' && !isNaN(currentValue));
+  all = arr.every((curVal) => curVal !== null && curVal !== ' ' && curVal !== NaN);
 
   if (flag || !all) {
-    alert('cannot clone book or all fields should not be empty');
+    alert('Please fill in all fields!');
   } else {
     myLibrary = addBookToLibrary(book, myLibrary);
     displayBooks(myLibrary);
@@ -101,3 +101,4 @@ function formGrab() {
   }
 }
 
+formGrab();
