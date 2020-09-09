@@ -8,15 +8,13 @@ function Book(title, author, pages, read) {
 }
 
 function addBookToLibrary(newbook, arrLibrary) {
-  const newArrLibrary = arrLibrary.slice();
+  arrLibrary.slice();
   return myLibrary.concat(newbook);
 }
 
 function removeBookToLibrary(index, arrLibrary) {
   return arrLibrary.splice(index, 1);
 }
-
-Book.prototype.upRead = upReadFunc;
 
 function upReadFunc() {
   if (this.read === 'Yes') {
@@ -25,6 +23,8 @@ function upReadFunc() {
     this.read = 'Yes';
   }
 }
+
+Book.prototype.upRead = upReadFunc;
 
 const book1 = new Book('Javascript Algorithm', 'by Josia,', `${10} pages,`, 'Read? Yes');
 myLibrary = addBookToLibrary(book1, myLibrary);
@@ -42,7 +42,7 @@ function displayBooks(arrShow) {
   const cardBody = document.createElement('div');
   cardBody.setAttribute('id', 'content');
 
-  for (let i = 0; i < displArr.length; i++) {
+  for (let i = 0; i < displArr.length; i += 1) {
     const para = document.createElement('p');
     const del = document.createElement('button');
     const up = document.createElement('button');
@@ -79,7 +79,7 @@ function formGrab() {
   let all = false;
   arr.push(document.getElementById('book-title').value);
   arr.push(`by ${document.getElementById('book-author').value},`);
-  arr.push(`${Number.parseInt(document.getElementById('book-pages').value)} pages, Read?`);
+  arr.push(`${Number.parseInt((document.getElementById('book-pages').value), 10)} pages, Read?`);
   if (document.contains(document.querySelector('input[name="status"]:checked'))) {
     arr.push(document.querySelector('input[name="status"]:checked').value);
   } else {
