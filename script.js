@@ -1,6 +1,6 @@
 let myLibrary = [];
 
-function Book (title, author, pages, read) {
+function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
@@ -8,7 +8,7 @@ function Book (title, author, pages, read) {
 }
 
 function addBookToLibrary(newbook, arrLibrary) {
-  const newArrLibrary = arrLibrary.slice( );
+  const newArrLibrary = arrLibrary.slice();
   return myLibrary.concat( newbook );
 }
 
@@ -95,12 +95,10 @@ function displayBooks( arrShow ) {
        displayBooks( myLibrary );
       } );
 
-    para.innerHTML = `${displArr[ i ].title } ${ displArr[ i ].author } ${ displArr[ i ].pages } ${displArr[ i ].read } <br>`;
-    cardBody.appendChild( para );
-    cardBody.appendChild( del );
-    cardBody.appendChild( up );
+    para.innerHTML = `${displArr[i].title } ${ displArr[i].author } ${ displArr[i].pages } ${displArr[i].read} <br>`;
+    cardBody.appendChild(para);
+    cardBody.appendChild(del);
+    cardBody.appendChild(up);
   }
-  container.appendChild( cardBody );
-
-  //Document.getElementById("submit").innerHTML = myLibrary;
+  container.appendChild(cardBody);
 }
