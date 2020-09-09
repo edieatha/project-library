@@ -17,20 +17,21 @@ function removeBookToLibrary( index, arrLibrary ) {
 }
 
 Book.prototype.upRead = function( ) {
-  if ( this.read == "Yes" ) {
-    this.read = "No";
+  if ( this.read == "Read? Yes" ) {
+    this.read = "Read? No";
   }else {
-    this.read = "Yes";
+    this.read = " Read? Yes";
   }
 };
 
-let book1 = new Book( "Javascript Algorithm", "Josia", 10, "Yes" );
+let book1 = new Book( "Javascript Algorithm", "by Josia,", 10 + " pages,", "Read? Yes" );
 myLibrary = addBookToLibrary( book1, myLibrary );
 console.log( myLibrary[ 0 ] );
-let book2 = new Book( "Ruby on Rails", "Edie",  20, "Yes" );
+let book2 = new Book( "Ruby on Rails", "by Edie,",  20 + " pages,", "Read?" +
+    " Yes" );
 myLibrary = addBookToLibrary( book2, myLibrary );
 console.log( myLibrary[ 1 ] );
-let book3 = new Book( "Oliver Twist", "Mark", 30, "No" );
+let book3 = new Book( "Oliver Twist", " by Mark,", 30 + " pages,", "Read? No" );
 myLibrary = addBookToLibrary( book3, myLibrary );
 console.log( myLibrary[ 2 ] );
 
@@ -42,8 +43,8 @@ function formGrab() {
   let flag = false;
   let all = false;
   arr.push( document.getElementById( "book-title" ).value );
-  arr.push( document.getElementById( "book-author" ).value );
-  arr.push( Number.parseInt( document.getElementById( "book-pages" ).value ) );
+  arr.push("by " + ( document.getElementById( "book-author" ).value ) + ",");
+  arr.push( (Number.parseInt( document.getElementById( "book-pages" ).value )) + " pages, Read? " );
   if ( document.contains( document.querySelector( 'input[name="status"]:checked' ) ) )  {
     arr.push( document.querySelector( 'input[name="status"]:checked' ).value );
   } else {
@@ -82,7 +83,9 @@ function displayBooks( arrShow ) {
     let para = document.createElement( "p" );
     let del = document.createElement( "button" );
     let up = document.createElement( "button" );
-    del.classList.add( "delete" );
+    del.classList.add( "btn-danger", "btn", "mr-2", "btn-sm" );
+    up.classList.add( "btn-success", "btn", "mr-2", "btn-sm" );
+    para.classList.add("mb-1", "mt-2");
     del.textContent = "Remove";
     del.addEventListener( "click", () => {
       removeBookToLibrary( i, arrShow );
