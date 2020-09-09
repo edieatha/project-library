@@ -1,39 +1,35 @@
 let myLibrary = [];
 
-function Book ( title, author, pages, read ) {
+function Book (title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.read = read;
 }
 
-function addBookToLibrary( newbook, arrLibrary ) {
-  let newArrLibrary = arrLibrary.slice( );
+function addBookToLibrary(newbook, arrLibrary) {
+  const newArrLibrary = arrLibrary.slice( );
   return myLibrary.concat( newbook );
 }
 
-function removeBookToLibrary( index, arrLibrary ) {
-  return arrLibrary.splice( index, 1 );
+function removeBookToLibrary(index, arrLibrary) {
+  return arrLibrary.splice(index, 1);
 }
 
-Book.prototype.upRead = function( ) {
-  if ( this.read == "Read? Yes" ) {
-    this.read = "Read? No";
+Book.prototype.upRead = function () {
+  if (this.read === 'Read? Yes') {
+    this.read = 'Read? No';
   }else {
-    this.read = " Read? Yes";
+    this.read = ' Read? Yes';
   }
 };
 
-let book1 = new Book( "Javascript Algorithm", "by Josia,", 10 + " pages,", "Read? Yes" );
-myLibrary = addBookToLibrary( book1, myLibrary );
-console.log( myLibrary[ 0 ] );
-let book2 = new Book( "Ruby on Rails", "by Edie,",  20 + " pages,", "Read?" +
-    " Yes" );
-myLibrary = addBookToLibrary( book2, myLibrary );
-console.log( myLibrary[ 1 ] );
-let book3 = new Book( "Oliver Twist", " by Mark,", 30 + " pages,", "Read? No" );
-myLibrary = addBookToLibrary( book3, myLibrary );
-console.log( myLibrary[ 2 ] );
+const book1 = new Book('Javascript Algorithm', 'by Josia,', 10 + ' pages,', 'Read? Yes');
+myLibrary = addBookToLibrary(book1, myLibrary);
+const book2 = new Book( 'Ruby on Rails', 'by Edie,',  20 + ' pages,', 'Read? Yes');
+myLibrary = addBookToLibrary(book2, myLibrary);
+const book3 = new Book( 'Oliver Twist', ' by Mark,', 30 + ' pages,', 'Read? No');
+myLibrary = addBookToLibrary(book3, myLibrary);
 
 displayBooks( myLibrary );
 
