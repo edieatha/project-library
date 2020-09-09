@@ -24,10 +24,6 @@ Book.prototype.upRead = function( ) {
   }
 };
 
-Book.prototype.sayName = function() {
-  console.log( "ddd" );
-};
-
 let book1 = new Book( "Javascript Algorithm", "Josia", 10, "Yes" );
 myLibrary = addBookToLibrary( book1, myLibrary );
 console.log( myLibrary[ 0 ] );

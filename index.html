@@ -3,22 +3,23 @@
     <head>
         <meta charset="UTF-8">
         <title>Book Library</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     </head>
 
     <body>
-        <h1>Add Book</h1>
+	
+	 <div class="col-4">
+		  <h1>Add Book</h1>
         <form id = "myForm">
-        <label for="fname">Book title:</label><br>
-        <input type="text" id="book-title" name="book-title" required = 'required'><br>
-        <label for="lname">Book author:</label><br>
-        <input type="text" id="book-author" name="book-author" required = 'required'><br>
-        <label for="lname">Book pages:</label><br>
-        <input type="number" id="book-pages" name="book-pages" min = 1 required = 'required'><br>
-        <label for="lname">Read the Book?:</label><br>
-        <input type="radio" id="yes-status" class = "status" name="status" required = 'required' value='Yes'>Yes
-        <input type="radio" id="no-status" class = "status" name="status" required = 'required' value='No'>No<br>
-        <input type="button" id="submit" value="Add New Book" onclick="formGrab();">
+		<input type="text" id="book-title" name="book-title" required = 'required' placeholder="Enter Title" class="form-control"><br>
+		<input type="text" id="book-author" name="book-author" required = 'required' placeholder="Enter Author" class="form-control"><br>
+        <input type="number" id="book-pages" name="book-pages" min = 1 required = 'required' placeholder="Enter Pages" class="form-control"><br>
+        <label for="lname">Read the Book?</label>
+        <input type="radio" id="yes-status" class = "status" name="status" required = 'required' value='Yes' class="form-check-input"> Yes 
+        <input type="radio" id="no-status" class = "status" name="status" required = 'required' value='No'> No<br>
+        <input type="button" id="submit" value="Add New Book" class="btn btn-primary" onclick="formGrab();">
         </form>
+	 </div>
 
         <h1>Book Library</h1>
         <div id="container">
