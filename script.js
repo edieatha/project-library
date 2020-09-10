@@ -78,7 +78,7 @@ form.addEventListener('submit', (e) => {
   let flag = false;
   arr.push(document.getElementById('book-title').value);
   arr.push(document.getElementById('book-author').value);
-  arr.push(Number.parseInt((document.getElementById('book-pages').value ), 10));
+  arr.push(Number.parseInt((document.getElementById('book-pages').value), 10));
   if (document.contains(document.querySelector('input[name="status"]:checked'))) {
     arr.push(document.querySelector('input[name="status"]:checked').value);
   } else {
@@ -90,7 +90,7 @@ form.addEventListener('submit', (e) => {
   flag = myLibrary.some((curVal) => curVal.title === arr[0] && curVal.author === arr[1]);
 
   if (flag) {
-    alert('cannot clone book');
+    alert('cannot clone book'); // eslint-disable-line no-alert
   } else {
     myLibrary = addBookToLibrary(book, myLibrary);
     displayBooks(myLibrary);
