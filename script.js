@@ -35,8 +35,8 @@ myLibrary = addBookToLibrary(book3, myLibrary);
 
 function displayBooks(arrShow) {
   const displArr = arrShow.slice();
-  const container = document.querySelector("#container");
-  if ( document.contains( document.getElementById('content') ) ) {
+  const container = document.querySelector('#container');
+  if (document.contains(document.getElementById('content'))) {
     document.getElementById('content').remove();
   }
   const cardBody = document.createElement('div');
@@ -50,15 +50,15 @@ function displayBooks(arrShow) {
     up.classList.add('btn-success', 'btn', 'mr-2', 'btn-sm');
     para.classList.add('mb-1', 'mt-2');
     del.textContent = 'Remove Book';
-    del.addEventListener( 'click', () => {
+    del.addEventListener('click', () => {
       removeBookToLibrary(i, arrShow);
       displayBooks(myLibrary);
-    } );
+    });
 
     up.classList.add('update');
     up.textContent = 'Update status';
     up.addEventListener('click', () => {
-      displArr[ i ].upRead();
+      displArr[i].upRead();
       displayBooks(myLibrary);
     });
 
@@ -70,7 +70,7 @@ function displayBooks(arrShow) {
   container.appendChild(cardBody);
 }
 
-displayBooks( myLibrary );
+displayBooks(myLibrary);
 
 const form = document.getElementById('myForm');
 form.addEventListener('submit', (e) => {
@@ -78,8 +78,8 @@ form.addEventListener('submit', (e) => {
   let flag = false;
   arr.push(document.getElementById('book-title').value);
   arr.push(document.getElementById('book-author').value);
-  arr.push(Number.parseInt( (document.getElementById('book-pages').value ), 10 ));
-  if (document.contains( document.querySelector('input[name="status"]:checked') ) ) {
+  arr.push(Number.parseInt((document.getElementById('book-pages').value ), 10));
+  if (document.contains(document.querySelector('input[name="status"]:checked'))) {
     arr.push(document.querySelector('input[name="status"]:checked').value);
   } else {
     arr.push(null);
@@ -87,7 +87,7 @@ form.addEventListener('submit', (e) => {
 
   const book = new Book(...arr);
 
-  flag = myLibrary.some( (curVal) => curVal.title === arr[0] && curVal.author === arr[1] );
+  flag = myLibrary.some((curVal) => curVal.title === arr[0] && curVal.author === arr[1]);
 
   if (flag) {
     alert('cannot clone book');
@@ -97,4 +97,4 @@ form.addEventListener('submit', (e) => {
     form.reset();
   }
   e.preventDefault();
-} );
+});
