@@ -51,15 +51,15 @@ function displayBooks(arrShow) {
     para.classList.add('mb-1', 'mt-2');
     del.textContent = 'Remove Book';
     del.addEventListener('click', () => {
-      removeBookToLibrary(i, arrShow); // eslint-disable-line no-loop-func
-      displayBooks(myLibrary);
+      removeBookToLibrary(i, arrShow);
+      displayBooks(arrShow);
     });
 
     up.classList.add('update');
     up.textContent = 'Update status';
     up.addEventListener('click', () => {
-      displArr[i].upRead(); // eslint-disable-line no-loop-func
-      displayBooks(myLibrary);
+      displArr[i].upRead();
+      displayBooks(arrShow);
     });
 
     para.innerHTML = `${displArr[i].title} by ${displArr[i].author} ${displArr[i].pages} pages, Read? ${displArr[i].read} <br>`;
