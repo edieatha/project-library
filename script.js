@@ -51,14 +51,14 @@ function displayBooks(arrShow) {
     para.classList.add('mb-1', 'mt-2');
     del.textContent = 'Remove Book';
     del.addEventListener('click', () => {
-      removeBookToLibrary(i, arrShow);
+      removeBookToLibrary(i, arrShow); // eslint-disable-line no-loop-func
       displayBooks(myLibrary);
     });
 
     up.classList.add('update');
     up.textContent = 'Update status';
     up.addEventListener('click', () => {
-      displArr[i].upRead();
+      displArr[i].upRead(); // eslint-disable-line no-loop-func
       displayBooks(myLibrary);
     });
 
