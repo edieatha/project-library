@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Book Library</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    </head>
+
+    <body>
+	<div class = "d-flex p-3" >
+
+        <div class="card shadow mb-5 bg-white rounded">
+            <h1 class="card-header">Library</h1>
+            <div class="card-body" id="container"></div>
+        </div>
+
+	       <div class="col-4 card shadow-sm p-3 mb-5 bg-white rounded">
+           <h2>Add Book</h2>
+          <form id = "myForm" acrion = "/" method = "GET">
+		        <input type="text" id="book-title" name="book-title" required = 'required' placeholder="Enter Title" class="form-control"><br>
+		        <input type="text" id="book-author" name="book-author" required = 'required' placeholder="Enter Author" class="form-control"><br>
+            <input type="number" id="book-pages" name="book-pages" min = 1 required = 'required' placeholder="Enter Pages" class="form-control"><br>
+            <label for="lname">Read the Book?</label>
+            <input type="radio" id="yes-status" class = "status" name="status" required = 'required' value='Yes' class="form-check-input"> Yes
+            <input type="radio" id="no-status" class = "status" name="status" required = 'required' value='No'> No<br>
+            <input type="submit" id="submit" value="Add New Book" class="btn btn-primary">
+          </form>
+	       </div>
+
+
+    </div>
+
+    </body>
+
+
+<script src="script.js"></script>
+
+</html>
